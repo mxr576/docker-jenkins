@@ -62,3 +62,40 @@ export FACTER_OPENVPN_USERNAME="${OPENVPN_USERNAME}"
 export FACTER_OPENVPN_PASSWORD="${OPENVPN_PASSWORD}"
 
 export FACTER_OPENVPN_CA_CERTIFICATE="${OPENVPN_CA_CERTIFICATE}"
+
+if [ -n "${MYSQL_HOST}" ]; then
+  export FACTER_MYSQL_HOST="${MYSQL_HOST}"
+
+  if [ -z "${MYSQL_PORT}" ]; then
+    MYSQL_PORT="3306"
+  fi
+
+  export FACTER_MYSQL_PORT="${MYSQL_PORT}"
+else
+  MYSQL_PORT="$(echo "${MYSQL_PORT}" | sed 's/tcp:\/\///')"
+
+  export FACTER_MYSQL_HOST="$(echo "${MYSQL_PORT}" | cut -d ":" -f1)"
+  export FACTER_MYSQL_PORT="$(echo "${MYSQL_PORT}" | cut -d ":" -f2)"
+fi
+
+if [ -z "${MYSQL}" ]; then
+  MYSQL="Off"
+fi
+
+if [ "${MYSQL}" == "True" ]; then
+  MYSQL="On"
+fi
+
+export FACTER_MYSQL="${MYSQL}"
+
+if [ -z "${USER_ID}" ]; then
+  USER_ID=1000
+fi
+
+export FACTER_USER_ID="${USER_ID}"
+
+if [ -z "${GROUP_ID}" ]; then
+  GROUP_ID=1000
+fi
+
+export FACTER_GROUP_ID="${GROUP_ID}"

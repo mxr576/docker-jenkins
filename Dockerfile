@@ -1,6 +1,6 @@
 FROM dockerizedrupal/base-debian-jessie:1.1.0
 
-MAINTAINER Jürgen Viljaste <j.viljaste@gmail.com>
+MAINTAINER Dezső BICZÓ <mxr576@gmail.com>
 
 LABEL vendor=dockerizedrupal.com
 

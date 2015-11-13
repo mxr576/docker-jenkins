@@ -1,4 +1,6 @@
 class build {
+  include build::user
+
   include build::jenkins
   include build::docker
   include build::docker::machine
@@ -12,6 +14,7 @@ class build {
   include build::awscli
   include build::git_svn
   include build::php
+  include build::mysql
   include build::composer
   include build::ansible
   include build::openvpn
