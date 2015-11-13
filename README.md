@@ -2,6 +2,10 @@
 
 A Docker image for [Jenkins](http://jenkins-ci.org/) with [Nginx](http://nginx.org/) in front of it providing support for HTTPS.
 
+## tl;dr;
+
+This is a modified version of the DockerizedDrupal's Jenkins image. This image has pre-installed mysql-client and php5-mysql packages, because this way the Jenkins will be able to run drush commands. (Drush should be mounted somewhere.)
+
 ## Run the container
 
     CONTAINER="jenkins-data" && sudo docker run \
