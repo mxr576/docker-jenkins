@@ -13,7 +13,7 @@ This is a modified version of the DockerizedDrupal's Jenkins image. This image h
       -h "${CONTAINER}" \
       -v /jenkins \
       --entrypoint /bin/echo \
-      dockerizedrupal/jenkins:1.1.7 "Data-only container for Jenkins."
+      mxr576/docker-jenkins "Data-only container for Jenkins."
 
     CONTAINER="jenkins" && sudo docker run \
       --name "${CONTAINER}" \
@@ -34,15 +34,15 @@ This is a modified version of the DockerizedDrupal's Jenkins image. This image h
       -e OPENVPN_PASSWORD="" \
       -e OPENVPN_CA_CERTIFICATE="" \
       -d \
-      dockerizedrupal/jenkins:1.1.7
+      mxr576/docker-jenkins
 
 ## Build the image
 
     TMP="$(mktemp -d)" \
-      && git clone https://github.com/dockerizedrupal/docker-jenkins.git "${TMP}" \
+      && git clone https://github.com/mxr576/docker-jenkins.git "${TMP}" \
       && cd "${TMP}" \
       && git checkout 1.1.7 \
-      && sudo docker build -t dockerizedrupal/jenkins:1.1.7 . \
+      && sudo docker build -t mxr576/docker-jenkins . \
       && cd -
 
 ## Changing the container behaviour on runtime through environment variables
